@@ -4,7 +4,7 @@ import path from "path";
 
 export default defineConfig({
   plugins: [react()],
-  base: "/spirit-weave-essence/",
+  base: "./",
   build: {
     lib: {
       entry: path.resolve(__dirname, "src/main.tsx"),
