@@ -3,8 +3,19 @@ import react from "@vitejs/plugin-react-swc";
 import path from "path";
 
 export default defineConfig({
-  base: "./", // ⚠ 使用相对路径，保证 Pages 正确引用静态资源
   plugins: [react()],
+  base: "./",
+  build: {
+    lib: {
+      entry: path.resolve(__dirname, "src/main.tsx"),
+      name: "App",
+      fileName: "index",
+      formats: ["iife"], // 自包含 JS
+    },
+    rollupOptions: {
+      external: [], // React 会被打包进去
+    },
+  },
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
